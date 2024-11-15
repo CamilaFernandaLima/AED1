@@ -1,3 +1,6 @@
+//Camila Fernanda e Silva Lima - RA: 176.165
+//Amigos
+
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
