@@ -1,3 +1,6 @@
+//Camila Fernanda e Silva Lima - RA: 176.165
+//Sudoku
+
 #include <stdio.h>
 #include <stdbool.h>
 
