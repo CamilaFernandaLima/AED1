@@ -1,3 +1,6 @@
+//Camila Fernanda e Silva Lima - RA: 176.165
+//Fatorial
+
 #include <stdio.h>
 
 int fat(n){
