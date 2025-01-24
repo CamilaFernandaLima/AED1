@@ -2,63 +2,51 @@
 //Mapa do Meistre 
 
 #include <stdio.h>
-#include <string.h>
-
 int main(){
-    int x,y,i,j, aux = 0, starti, startj;
+    int linha, coluna;
+    scanf("%d %d", &coluna, &linha);
+    getchar();
 
-    scanf("%d", &x);
-    scanf("%d", &y);
-    char matriz[100][100];
-
-    for(i=0; i<y; i++){
-        for(j=0; j<x; j++){
-            scanf(" %c", &matriz[i][j]);
-            if(matriz[i][j] == '*'){
-                aux++;
-                starti = i;
-                startj = j;
-            }
+    char matriz[linha][coluna];
+    char entrada;
+    for(int i = 0; i<linha; i++){
+        for(int j = 0; j<coluna; j++){
+            scanf(" %c", &entrada);
+            matriz[i][j] = entrada;
         }
     }
 
-    if(aux != 1){
-        printf("!\n");
-        return 0;
-    }
+    int playerX, playerY, count;
+    playerY = 0;
+    playerX = 0;
+    count = 0;
 
-    i = starti;
-    j = startj;
-    
+    char mark, valid;
+    mark = matriz[0][0];
+    valid  = '!';
 
-    while (i >= 0 && i<y &&  j >= 0 && j<x){
-        if(matriz[i][j] == '*'){
-            printf("*\n");
-            return 0;
-        }    
-
-        if(matriz[i][j] == '>'){
-            j++;
-            while (matriz[i][j] == '.') j++;
-            
-        } else if(matriz[i][j] == '<'){
-            j--;
-            while (matriz[i][j] == '.') j--;
-
-        } else if(matriz[i][j] == '^'){
-            i--;
-            while (matriz[i][j] == '.') i--;
-
-        } else if(matriz[i][j] == 'v'){
-            i++;
-            while (matriz[i][j] == '.') i++;
-
-        } else{
-            printf("!\n");
-            return 0;
+    while(playerY >= 0 && playerY < linha && playerX >= 0 && playerX < coluna && count <= linha * coluna && valid != '*'){        
+        switch(mark){
+            case '>':
+                playerX++;               
+                break;
+            case '<':
+                playerX--;                
+                break;
+            case '^':
+                playerY--;
+                break;
+            case 'v':
+                playerY++;                
+                break;
         }
-    } 
         
-    printf("!\n");
+        if(matriz[playerY][playerX] != '.' && matriz[playerY][playerX] !='*')
+            mark = matriz[playerY][playerX];
+        else if(matriz[playerY][playerX] =='*')
+            valid ='*';
+        count++;
+    }
+    printf("%c\n", valid);
     return 0;
 }
